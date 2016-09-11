@@ -15,12 +15,19 @@
         <h1>Create New Post</h1>
         {!! Form::open(array('route' => 'posts.store', 'data-parsley-validate' => '')) !!}
             {{Form::label('title', 'Title')}}
-            {{Form::text('title', null, array('class' => 'form-control input-lg', 'required' => '', 'maxlength' => '255'))}}
+            {{Form::text('title', null, array('class' => 'form-control input-lg', 
+                        'required' => '', 'maxlength' => '255'))}}
+            
+            {{Form::label('slug', 'Slug')}}
+            {{Form::text('slug', null, array('class' =>'form-control', 
+                        'required'=>'', 'minlength' => '5', 'maxlength' => 255))}}
             
             {{Form::label('body', 'Body')}}
-            {{Form::textarea('body', null, array('class' => 'form-control', 'required' => ''))}}
+            {{Form::textarea('body', null, array('class' => 'form-control', 
+                        'required' => ''))}}
             
-            {{Form::submit('Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top : 7px;'))}}
+            {{Form::submit('Post', array('class' => 'btn btn-success btn-lg btn-block', 
+                        'style' => 'margin-top : 7px;'))}}
         {!! Form::close() !!}
 
     </div>
