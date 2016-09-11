@@ -10,8 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('about', 'PagesController@getAbout');
-Route::get('/', 'PagesController@getIndex');
-Route::get('contact', 'PagesController@getContact');
-Route::resource('posts', 'PostController');
+Route::group(['middleware'=> ['web']],function(){
+    Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])
+            ->where('slug', '[\w\d\-\_]+');
+    Route::get('about', 'PagesController@getAbout');
+    Route::get('/', 'PagesController@getIndex');
+    Route::get('contact', 'PagesController@getContact');
+    Route::resource('posts', 'PostController');
+});
