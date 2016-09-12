@@ -25,6 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+<!--                    <img src="../../public/img/logo.jpg" style="width:160px;height:50px;">-->
                     <a class="navbar-brand" href="/">World of Tanks</a>
                 </div>
 
@@ -36,25 +37,32 @@
                         <li class="{{Request::is('about') ? 'active':''}}"><a href="/about">About</a></li>
                         <li class="{{Request::is('contact') ? 'active':''}}"><a href="/contact">Contact</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left">
+                    <form class="navbar-form navbar-left {{Request::is('blog') ? '':'hid'}}">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search">
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default 
+                                {{Request::is('blog') ? '':'hid'}}">Submit</button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="http://eu.wargaming.net/" target="_blank">WarGaming</a></li>
+                        
+                        @if (Auth::check())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                               aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
+                               aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('posts.index') }}">Posts</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="{{ route('logout') }}">Logout</a></li>
                             </ul>
                         </li>
+                        @else
+                        
+                        <a href='{{ route('login') }}' class='btn btn-default btn-h5-spacing'>Login</a>
+                        
+                        @endif
+                        
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -69,7 +77,7 @@
             
         </div> <!-- container end -->
         
-        <footer>Footer something ...</footer>
+        <footer class="text-center">Footer something ...</footer>
 
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
