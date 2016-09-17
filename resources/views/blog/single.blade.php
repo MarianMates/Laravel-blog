@@ -58,7 +58,7 @@
                 {{ Form::label('comment', 'Comment') }}
                 {{ Form::textarea('comment', null, ['rows' => '5', 'class' => 'form-control']) }}
 
-                {{ Form::submit('Add Comment', ['class' => 'btn btn-success btn-block']) }}
+                {{ Form::submit('Add Comment', ['class' => 'btn btn-success btn-block btn-h5-spacing']) }}
             </div>
         </div>
 

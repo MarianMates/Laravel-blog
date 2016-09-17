@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Comment;
+use App\Http\Controllers\Controller;
 use App\Post;
 use Session;
 
 
 class CommentsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except'=>'store']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -82,7 +86,8 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('comments.edit')->withComment($comment);
     }
 
     /**
@@ -94,7 +99,22 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        
+        $this->validate($request, array('comment' => 'required'));
+        
+        $comment->comment = $request->comment;
+        $comment->save();
+        
+        Session::flash('success', 'Comment updated!');
+        
+        return redirect()->route('posts.show', $comment->post->id);
+    }
+    
+    public function delete($id)
+    {
+        $comment = Comment::find($id);
+        return view('comments.delete')->withComment($comment);
     }
 
     /**
@@ -105,6 +125,12 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $post_id = $comment->post->id;
+        $comment->delete();
+        
+        Session::flash('success', 'Deleted');
+        
+        return redirect()->route('posts.show', $post_id);
     }
 }
