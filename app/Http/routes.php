@@ -30,6 +30,8 @@ Route::group(['middleware'=> ['web']],function(){
     Route::delete('comments/{id}', ['uses' => 'CommentsController@destroy', 'as'=>'comments.destroy']);
     Route::get('comments/{id}/delete', ['uses' => 'CommentsController@delete', 'as'=>'comments.delete']);
     
+    //search
+ 
     
     //pages
     Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);

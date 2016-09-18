@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <title>WOT Blog @yield('title')</title>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        {{Html::style('css/styles.css')}}
-        @yield('stylesheets')
-    </head>
+    @include('partials._head')
+
     <body>
 
         <nav class="navbar navbar-default">
@@ -37,16 +27,12 @@
                         <li class="{{Request::is('about') ? 'active':''}}"><a href="/about">About</a></li>
                         <li class="{{Request::is('contact') ? 'active':''}}"><a href="/contact">Contact</a></li>
                     </ul>
-                    <form class="navbar-form navbar-left {{Request::is('blog') ? '':'hid'}}">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default 
-                                {{Request::is('blog') ? '':'hid'}}">Submit</button>
-                    </form>
+
+                    @include('partials._search')
+
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="http://eu.wargaming.net/" target="_blank">WarGaming</a></li>
-                        
+
                         @if (Auth::check())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
@@ -58,11 +44,11 @@
                             </ul>
                         </li>
                         @else
-                        
+
                         <a href='{{ route('login') }}' class='btn btn-default btn-h5-spacing'>Login</a>
-                        
+
                         @endif
-                        
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -70,21 +56,17 @@
 
         <div class="container">
             @include('partials._messages')
-            
+
             @yield('content')
-            
+
             <hr>
-            
+
         </div> <!-- container end -->
-        
+
         <footer class="text-center">Footer something ...</footer>
 
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        @include('partials._scripts')
         @yield('scripts')
     </body>
 </html>
