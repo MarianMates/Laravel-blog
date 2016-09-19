@@ -16,7 +16,8 @@
         <h2>{{ $post->title }}</h2>
         <h5>Published: {{ date('M j, Y H:i', strtotime($post->created_at)) }}</h5>
         
-        <p>{{ substr($post->body, 0, 250) }}{{ strlen($post->body) > 250 ? '...' : '' }}</p>
+        <p>{!! substr($post->body, 0, 250) !!}
+            {{ strlen(strip_tags($post->body)) > 250 ? '...' : '' }}</p>
         
         <a href="{{ url('blog/'.$post->slug) }}" class='btn btn-primary'>Continue reading</a>
         <hr>

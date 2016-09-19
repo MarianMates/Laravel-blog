@@ -8,7 +8,7 @@
     <div class="col-md-8">
         <h1>{{ $post->title }}</h1>
 
-        <p class='lead'>{{ $post->body }}</p>
+        <p class='lead'>{!! $post->body !!}</p>
     
         <div id="backend-comments">
             <h3>Comments : <small>{{ $post->comments()->count() }} total</small></h3>
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $comment->name }}</td>
                         <td>{{ $comment->email }}</td>
-                        <td>{{ $comment->comment }}</td>
+                        <td>{!! $comment->comment !!}</td>
                         <td>
                             <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-xs btn-primary">
                                 <span class="glyphicon glyphicon-pencil"></span>
