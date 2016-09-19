@@ -2,6 +2,21 @@
 
 @section('title', "- $post->title")
 
+@section('stylesheets')
+
+    {!! Html::style('css/parsley.css') !!}
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'link code',
+            menubar: false
+        });
+    </script>
+
+@endsection
+
 @section ('content')
 
 <div class='row'>
@@ -46,12 +61,14 @@
         <div class="row">
             <div class="col-md-6">
                 {{ Form::label('mane', 'Name') }}
-                {{ Form::text('name', null, ['class' => 'form-control']) }}
+                {{ Form::text('name', null, ['class' => 'form-control',
+                            'required' => '', 'maxlength' => '30']) }}
             </div>
 
             <div class="col-md-6">
                 {{ Form::label('email', 'Email') }}
-                {{ Form::text('email', null, ['class' => 'form-control']) }}
+                {{ Form::text('email', null, ['class' => 'form-control',
+                            'required'=>'','type'=>'email']) }}
             </div>
 
             <div class="col-md-12">

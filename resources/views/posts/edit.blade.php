@@ -2,16 +2,32 @@
 
 @section('title', '- Edit Post')
 
+@section('stylesheets')
+
+    {!! Html::style('css/parsley.css') !!}
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'link code'
+        });
+    </script>
+
+@endsection
+
 @section('content')
 
 <div class="row">
     {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
     <div class="col-md-8">
         {{ Form::label('title', 'Title') }}
-        {{ Form::text('title', null, ['class' => 'form-control input-lg']) }}
+        {{ Form::text('title', null, ['class' => 'form-control input-lg',
+                    'required' => '', 'maxlength' => '255']) }}
         
         {{Form::label('slug', 'Slug')}}
-        {{Form::text('slug', null, ['class' =>'form-control'])}}
+        {{Form::text('slug', null, ['class' =>'form-control',
+                    'required'=>'', 'minlength' => '5', 'maxlength' => 255])}}
 
         {{ Form::label('body', 'Body') }}
         {{ Form::textarea('body', null, ['class' => 'form-control']) }}
