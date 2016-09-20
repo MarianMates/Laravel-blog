@@ -62,7 +62,7 @@
         {!! csrf_field() !!}
         <div class="row">
             <div class="col-md-6">
-                {{ Form::label('mane', 'Name') }}
+                {{ Form::label('name', 'Name') }}
                 {{ Form::text('name', null, ['class' => 'form-control',
                             'required' => '', 'maxlength' => '30']) }}
             </div>
