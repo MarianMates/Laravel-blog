@@ -5,12 +5,13 @@
 @section('stylesheets')
 
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    
+
     <script>
         tinymce.init({
             selector: 'textarea',
-            plugins: 'link code',
-            menubar: false
+            plugins: 'link code image',
+            menubar: false,
+            image_caption : true
         });
     </script>
 
@@ -37,4 +38,3 @@
     </div>
 </div>
 @endsection
-

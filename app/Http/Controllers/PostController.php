@@ -7,6 +7,7 @@ use Session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Image;
 
 class PostController extends Controller
 {
@@ -21,7 +22,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id', 'desc')->paginate(6);
-        
+
         return view('posts.index')->withPosts($posts);
     }
 
@@ -49,15 +50,25 @@ class PostController extends Controller
             'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
             'body' => 'required'
         ));
-        
+
         // store data
         $post = new Post;
         $post->title = $request->title;
         $post->slug = $request->slug;
         $post->body = $request->body;
+
+        if ($request->hasFile('featured_image')) {
+            $image = $request->file('featured_image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename);
+            Image::make($image)->resize(800, 400)->save($location);
+
+            $post->image = $filename;
+        }
+
         $post->save();
         Session::flash('success', 'Post saved!');
-        
+
         return redirect()->route('posts.show', $post->id);
     }
 
@@ -106,20 +117,20 @@ class PostController extends Controller
                 'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
                 'body' => 'required'));
         };
-        
-        
+
+
         //save data
         $post = Post::find($id);
-        
+
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->body = $request->input('body');
-        
+
         $post->save();
-        
+
         //Flash message
         Session::flash('success', 'The post was updated!');
-                
+
         //redirect to view
         return redirect()->route('posts.show', $post->id);
     }
@@ -133,11 +144,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        
+
         $post->delete();
-        
+
         Session::flash('success', 'The post was deleted!');
-        
+
         return redirect()->route('posts.index');
     }
 }

@@ -6,11 +6,12 @@
 
     {!! Html::style('css/parsley.css') !!}
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    
+
     <script>
         tinymce.init({
             selector: 'textarea',
-            plugins: 'link code'
+            plugins: 'link code image',
+            image_caption : true
         });
     </script>
 
@@ -24,7 +25,7 @@
         {{ Form::label('title', 'Title') }}
         {{ Form::text('title', null, ['class' => 'form-control input-lg',
                     'required' => '', 'maxlength' => '255']) }}
-        
+
         {{Form::label('slug', 'Slug')}}
         {{Form::text('slug', null, ['class' =>'form-control',
                     'required'=>'', 'minlength' => '5', 'maxlength' => 255])}}

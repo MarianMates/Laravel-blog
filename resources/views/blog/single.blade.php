@@ -6,12 +6,13 @@
 
     {!! Html::style('css/parsley.css') !!}
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    
+
     <script>
         tinymce.init({
             selector: 'textarea',
-            plugins: 'link code',
-            menubar: false
+            plugins: 'link code image',
+            menubar: false,
+            image_caption : true
         });
     </script>
 
@@ -21,6 +22,7 @@
 
 <div class='row'>
     <div class='col-md-8 col-md-offset-2'>
+      <!--  <img src="{{ asset('images/' . $post->image) }}"/> -->
         <h1>{{ $post->title }}</h1>
         <p>{!! $post->body !!}</p>
     </div>
@@ -36,7 +38,7 @@
         @foreach($post->comments as $comment)
         <div class="comment">
             <div class="author-info">
-                <img src="{{ 'https://www.gravatar.com/avatar/' . 
+                <img src="{{ 'https://www.gravatar.com/avatar/' .
                      md5(strtolower(trim($comment->email))) . "?d=wavatar" }}" class="author-image">
                 <div class="author-name">
                     <h4>{{ $comment->name }}</h4>
