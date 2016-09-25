@@ -59,11 +59,11 @@
 
             @yield('content')
 
-            <hr>
+            <hr class="{{Request::is('/') ? 'hid':''}}">
 
         </div> <!-- container end -->
 
-        <footer class="text-center">Marian Mates @ mates.marian_n@yahoo.com</footer>
+        <footer class="text-center {{Request::is('/') ? 'hid':''}}">Marian Mates - mates.marian_n@yahoo.com</footer>
 
 
         @include('partials._scripts')
