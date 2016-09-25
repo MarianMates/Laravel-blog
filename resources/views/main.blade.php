@@ -35,7 +35,7 @@
 
                         @if (Auth::check())
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ route('posts.index') }}">Posts</a></li>
@@ -52,7 +52,7 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
-        </nav>   
+        </nav>
 
         <div class="container">
             @include('partials._messages')
@@ -63,7 +63,7 @@
 
         </div> <!-- container end -->
 
-        <footer class="text-center">Footer something ...</footer>
+        <footer class="text-center">Marian Mates @ mates.marian_n@yahoo.com</footer>
 
 
         @include('partials._scripts')
