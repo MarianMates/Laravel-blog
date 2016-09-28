@@ -5,6 +5,7 @@
 @section('stylesheets')
 
     {!! Html::style('css/parsley.css') !!}
+    {{ Html::style('css/video.css') }}
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
     <script>
@@ -20,8 +21,15 @@
 
 @section ('content')
 
+  <div class="background-wrap">
+    <video class="video-bg-elem1" preload="auto" autoplay="true" loop="loop" muted="muted">
+      <source src="{{ URL::to('vid/backgr01.mp4') }}" type="video/mp4">
+        Video not supported
+      </video>
+    </div>
+
 <div class='row'>
-    <div class='col-md-8 col-md-offset-2'>
+    <div class='col-md-8 col-md-offset-2 wrappers'>
       <!--  <img src="{{ asset('images/' . $post->image) }}"/> -->
         <h1>{{ $post->title }}</h1>
         <p>{!! $post->body !!}</p>
@@ -36,7 +44,7 @@
          <h4 class="comment-count">Currently : {{ $post->comments()->count() }}
              <span class="glyphicon glyphicon-comment"></span></h4>
         @foreach($post->comments as $comment)
-        <div class="comment">
+        <div class="comment wrappersC">
             <div class="author-info">
                 <img src="{{ 'https://www.gravatar.com/avatar/' .
                      md5(strtolower(trim($comment->email))) . "?d=wavatar" }}" class="author-image">

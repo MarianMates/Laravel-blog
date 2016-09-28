@@ -5,10 +5,18 @@
 @section('stylesheets')
 
       {!! Html::style('css/parsley.css') !!}
+      {{ Html::style('css/video.css') }}
 
 @endsection
 
 @section('content')
+
+  <div class="background-wrap">
+    <video class="video-bg-elem1" preload="auto" autoplay="true" loop="loop" muted="muted">
+      <source src="{{ URL::to('vid/backgr01.mp4') }}" type="video/mp4">
+        Video not supported
+      </video>
+    </div>
 
 <h1 class="text-center">Contact me</h1>
 

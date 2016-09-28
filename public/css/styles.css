@@ -55,3 +55,23 @@
   height: 35px;
 
 }
+
+.wrappers {
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  background-color: #d9d9d9;
+  border-radius: 22px;
+  opacity: 0.8;
+}
+
+.wrappersC {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #99ffff;
+  border-radius: 22px;
+  opacity: 0.8;
+}
+
+footer {
+  color: white;
+}

@@ -5,18 +5,20 @@
 
     <body>
 
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <!--  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
+                    </button> -->
 <!--                    <img src="../../public/img/logo.jpg" style="width:160px;height:50px;">-->
-                    <a class="navbar-brand" href="/">World of Tanks</a>
+                    <a class="navbar-brand" href="/"><!--World of Tanks-->
+                        <img alt="Brand" src="{{ URL::to('images/brand.png') }}" style="margin-top: -10px;">
+                    </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

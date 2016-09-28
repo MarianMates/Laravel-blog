@@ -15,5 +15,9 @@ $('.cb').textillate({
   in: {
     effect: 'flash',
     sync: true
+  },
+  out: {
+    effect: 'fadeOut',
+    sync: true
   }
 });
